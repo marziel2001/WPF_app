@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\marzi\source\repos\PT\lab2_WPF_app\App.xaml
-11407045341
+21940823320
 
-5439778634
+6481587788
 2031899591702
-MainWindow.xaml;
+CreateFileWindow.xaml;MainWindow.xaml;
 
 False
 

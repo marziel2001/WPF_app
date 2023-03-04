@@ -19,3 +19,5 @@ C:\Users\marzi\source\repos\PT\lab2_WPF_app\obj\Debug\net6.0-windows\refint\lab2
 C:\Users\marzi\source\repos\PT\lab2_WPF_app\obj\Debug\net6.0-windows\lab2_WPF_app.pdb
 C:\Users\marzi\source\repos\PT\lab2_WPF_app\obj\Debug\net6.0-windows\lab2_WPF_app.genruntimeconfig.cache
 C:\Users\marzi\source\repos\PT\lab2_WPF_app\obj\Debug\net6.0-windows\ref\lab2_WPF_app.dll
+C:\Users\marzi\source\repos\PT\lab2_WPF_app\obj\Debug\net6.0-windows\CreateFileWindow.g.cs
+C:\Users\marzi\source\repos\PT\lab2_WPF_app\obj\Debug\net6.0-windows\CreateFileWindow.baml
