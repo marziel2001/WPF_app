@@ -126,7 +126,7 @@ namespace lab2_WPF_app {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/lab2_WPF_app;component/createfilewindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/lab2_WPF_app;V1.0.0.0;component/createfilewindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\CreateFileWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
