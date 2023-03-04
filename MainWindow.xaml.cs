@@ -20,8 +20,8 @@ namespace lab2_WPF_app
             InitializeComponent();
         }
 
-        private void Open(object sender, RoutedEventArgs e) {
-
+        private void Open(object sender, RoutedEventArgs e) 
+        {
             var dlg = new FolderBrowserDialog()
             {
                 Description = "Select directory to open"
@@ -33,8 +33,6 @@ namespace lab2_WPF_app
             DirectoryInfo directory = new DirectoryInfo(dlg.SelectedPath);
             var root = CreateTreeDirectory(directory);
             treeView.Items.Add(root);// add the created hierarchy to the tree element in GUI
-        
-        
         }
 
         private TreeViewItem CreateTreeDirectory(DirectoryInfo directory)
@@ -53,6 +51,7 @@ namespace lab2_WPF_app
             root.ContextMenu.Items.Add(contextItem1);// adds Create and Delete buttons to context menu of tree's leaf
             root.ContextMenu.Items.Add(contextItem2);
 
+            //recursive calls to create subtrees and leafs
             foreach (DirectoryInfo subDirectory in directory.GetDirectories())
             {
                 root.Items.Add(CreateTreeDirectory(subDirectory));
@@ -60,7 +59,9 @@ namespace lab2_WPF_app
             foreach(FileInfo file in directory.GetFiles())
             {
                 root.Items.Add(CreateTreeFile(file));
-            }
+            } 
+            //adds selection listener to print rahs in the status bar 
+            root.Selected += new RoutedEventHandler(RefreshStatusBar);
             return root;
         }
 
@@ -79,7 +80,7 @@ namespace lab2_WPF_app
             contextItem2.Click += new RoutedEventHandler(ContextItemDelete);
             item.ContextMenu.Items.Add(contextItem1);
             item.ContextMenu.Items.Add(contextItem2);
-            //item.Selected += new RoutedEventHandler(StatusBarUpdate);
+            item.Selected += new RoutedEventHandler(RefreshStatusBar);
             return item; 
         }
 
@@ -105,7 +106,6 @@ namespace lab2_WPF_app
                 }
             }
         }
-
         private void ContextItemDelete(object sender, RoutedEventArgs a)
         {
             TreeViewItem item = (TreeViewItem)treeView.SelectedItem;
@@ -138,17 +138,53 @@ namespace lab2_WPF_app
             string content = File.ReadAllText(((string)item.Tag));
             //scrollViewer.Content = new TextBlock() { Text = content };
         }
-
         private void deleteDirectory(string path)
         {
 
         }
-        private void Close(object sender, RoutedEventArgs e) 
+        private void RefreshStatusBar(object sender, RoutedEventArgs a)
+        {
+            TreeViewItem item = (TreeViewItem)treeView.SelectedItem;
+            status.Text = "";
+            FileAttributes rahs = File.GetAttributes((string)item.Tag);
+
+            if((rahs & FileAttributes.ReadOnly) == FileAttributes.ReadOnly)
+            {
+                status.Text += 'r';
+            }
+            else
+            {
+                status.Text += '-';
+            }            
+            if((rahs & FileAttributes.Archive) == FileAttributes.Archive)
+            {
+                status.Text += 'a';
+            }
+            else
+            {
+                status.Text += '-';
+            }            
+            if((rahs & FileAttributes.Hidden) == FileAttributes.Hidden)
+            {
+                status.Text += 'h';
+            }
+            else
+            {
+                status.Text += '-';
+            }            
+            if((rahs & FileAttributes.System) == FileAttributes.System)
+            {
+                status.Text += 's';
+            }
+            else
+            {
+                status.Text += '-';
+            }
+
+        }
+        private void Close(object sender, RoutedEventArgs a) 
         {
             Close();
         }       
     }
-
-   
-
 }

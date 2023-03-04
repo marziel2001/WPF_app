@@ -8,23 +8,22 @@
         Title="MainWindow" Height="450" Width="800">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="67*"/>
-            <ColumnDefinition Width="733*"/>
-        </Grid.ColumnDefinitions>
-        <ToolBar Height="40" Width="300" Margin="0,5,500,389" Grid.ColumnSpan="2">
-            <Menu Width="78">
+        <ToolBar Margin="0,5,693,399" Grid.ColumnSpan="2">
+            <Menu Width="76">
                 <MenuItem Header="File" VerticalAlignment="Center" Height="30">
                     <MenuItem Header="Open" Click="Open"></MenuItem>
                     <MenuItem Header="Close" Click="Close"></MenuItem>
                 </MenuItem>
             </Menu>
         </ToolBar>
-        <TreeView x:Name="treeView" Margin="142,0,0,0" Grid.Column="1"/>
+        <TreeView x:Name="treeView" Margin="142,0,312,0" >
 
-        <StatusBar Margin="0,403,591,0" Grid.ColumnSpan="2">
+        </TreeView>
+
+        <StatusBar Margin="0,403,663,0" >
             <TextBlock Name="status" Width="90"/>
         </StatusBar>
 
+        <ScrollViewer x:Name="scrollViewer" Margin="523,0,10,0" />
     </Grid>
 </Window>

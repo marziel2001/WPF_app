@@ -1,18 +1,9 @@
-﻿
-using System.Windows;
-
+﻿using System.Windows;
 using System.IO;
-
 using System.Text.RegularExpressions;
-
-
 
 namespace lab2_WPF_app
 {
-    /// <summary>
-    /// Logika interakcji dla klasy CreateFileWindow.xaml
-    /// </summary>
-
     public partial class CreateFileWindow : Window
     {
         private string path;
