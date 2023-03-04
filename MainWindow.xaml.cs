@@ -89,19 +89,19 @@ namespace lab2_WPF_app
         {
             TreeViewItem mainDirectory = (TreeViewItem)treeView.SelectedItem;
             string path = (string)mainDirectory.Tag;
-            CreateFileWindow dialog = new CreateFileWindow(path); // creates dialog window for creating files
-            dialog.ShowDialog();
+            CreateFileWindow createFile = new CreateFileWindow(path); // creates dialog window for creating files
+            createFile.ShowDialog();
 
-            if(dialog.Succeeded())
+            if(createFile.Succeeded())
             {
-                if(File.Exists(dialog.GetPath()))
+                if(File.Exists(createFile.GetPath()))
                 {
-                    FileInfo file = new FileInfo(dialog.GetPath());
+                    FileInfo file = new FileInfo(createFile.GetPath());
                     mainDirectory.Items.Add(CreateTreeFile(file));
                 }
-                else if(Directory.Exists(dialog.GetPath()))
+                else if(Directory.Exists(createFile.GetPath()))
                 {
-                    DirectoryInfo directory = new DirectoryInfo(dialog.GetPath());
+                    DirectoryInfo directory = new DirectoryInfo(createFile.GetPath());
                     mainDirectory.Items.Add(CreateTreeDirectory(directory));
                 }
             }
@@ -115,6 +115,7 @@ namespace lab2_WPF_app
 
             if((attributes & FileAttributes.Directory) == FileAttributes.Directory)
             {
+                //recursive method to delete the whole directory
                 deleteDirectory(path);
             }
             else
@@ -136,11 +137,26 @@ namespace lab2_WPF_app
         {
             TreeViewItem item = (TreeViewItem)treeView.SelectedItem;
             string content = File.ReadAllText(((string)item.Tag));
-            //scrollViewer.Content = new TextBlock() { Text = content };
+            TextBlock textBlock = new TextBlock() 
+            { 
+                Text = content, 
+                TextWrapping = TextWrapping.Wrap 
+            };
+            scrollViewer.Content = textBlock;
         }
         private void deleteDirectory(string path)
         {
+            DirectoryInfo directory = new DirectoryInfo(path);
 
+            foreach(var subdirectory in directory.GetDirectories())
+            {
+                deleteDirectory(subdirectory.FullName);
+            }
+            foreach(var file in directory.GetFiles())
+            {
+                File.Delete(file.FullName); 
+            }
+            Directory.Delete(path);
         }
         private void RefreshStatusBar(object sender, RoutedEventArgs a)
         {
@@ -180,7 +196,7 @@ namespace lab2_WPF_app
             {
                 status.Text += '-';
             }
-
+            
         }
         private void Close(object sender, RoutedEventArgs a) 
         {
