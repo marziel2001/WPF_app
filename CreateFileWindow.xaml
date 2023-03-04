@@ -5,18 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab2_WPF_app"
         mc:Ignorable="d"
-        Title="CreateFileWindow" Height="450" Width="400">
-    
+        Title="CreateFileWindow" Height="300" Width="300">
+
     <Grid RenderTransformOrigin="0.500,0.500">
-        <Label>Name</Label>
-        <TextBox x:Name="CreateFileWindowName"/>
-        <RadioButton x:Name="radioFile">File</RadioButton>
-        <RadioButton x:Name="radioDirectory">Directory</RadioButton>
-        <CheckBox x:Name="checkBoxR">ReadOnly</CheckBox>
-        <CheckBox x:Name="checkBoxA">Archive</CheckBox>
-        <CheckBox x:Name="checkBoxH">Hidden</CheckBox>
-        <CheckBox x:Name="checkBoxS">System</CheckBox>
-        <Button x:Name="okButton" Click="OK_Button">OK</Button>
-        <Button x:Name="cancelButton" Click="Cancel_Button">Cancel</Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="156*"/>
+            <ColumnDefinition Width="21*"/>
+            <ColumnDefinition Width="14*"/>
+            <ColumnDefinition Width="109*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Name:" Margin="91,29,20,231" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="CreateFileWindowName" Margin="145,35,74,0" Text="Tekst" TextAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="4"/>
+        <RadioButton x:Name="radioFile" Margin="65,86,39,181" >File</RadioButton>
+        <RadioButton x:Name="radioDirectory" Margin="65,103,6,164">Directory</RadioButton>
+        <CheckBox x:Name="checkBoxR" Margin="150,86,74,181" Grid.ColumnSpan="4" >ReadOnly</CheckBox>
+        <CheckBox x:Name="checkBoxA" Margin="150,130,74,137" Grid.ColumnSpan="4">Archive</CheckBox>
+        <CheckBox x:Name="checkBoxH" Margin="150,108,74,159" Grid.ColumnSpan="4">Hidden</CheckBox>
+        <CheckBox x:Name="checkBoxS" Margin="150,152,74,115" Grid.ColumnSpan="4">System</CheckBox>
+        <Button x:Name="okButton" Click="OK_Button" Margin="91,193,24,64" >OK</Button>
+        <Button x:Name="cancelButton" Click="Cancel_Button" Margin="150,193,0,64" Grid.ColumnSpan="3">Cancel</Button>
     </Grid>
 </Window>

@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 using System.IO;
-using System.Windows.Forms;
-using System.Windows.Navigation;
-using MenuItem = System.Windows.Controls.MenuItem;
+
 using System.Text.RegularExpressions;
 
 
@@ -40,7 +28,7 @@ namespace lab2_WPF_app
         public void OK_Button(object sender, RoutedEventArgs a)
         {
             bool isDirectory = (bool)radioDirectory.IsChecked;
-            bool isFile = (bool)radioDirectory.IsChecked;
+            bool isFile = (bool)radioFile.IsChecked;
 
             if (isFile && !Regex.IsMatch(CreateFileWindowName.Text, "^[a-zA-Z0-9-~_]{1,8}\\.(html|php|txt)$"))
             {
@@ -54,24 +42,24 @@ namespace lab2_WPF_app
             }
             else
             {
-                Name = CreateFileWindowName.Text;
-                path = path + "\\" + Name;
-                FileAttributes attributes = FileAttributes.Normal;//assigns default mask
+                name = CreateFileWindowName.Text;
+                path = path + "\\" + name;
+                FileAttributes rahs = FileAttributes.Normal;//assigns default mask
                 if ((bool)checkBoxR.IsChecked)
                 {
-                    attributes |= FileAttributes.ReadOnly;
+                    rahs |= FileAttributes.ReadOnly;
                 }
                 if ((bool)checkBoxA.IsChecked)
                 {
-                    attributes |= FileAttributes.Archive;
+                    rahs |= FileAttributes.Archive;
                 }
                 if ((bool)checkBoxH.IsChecked)
                 {
-                    attributes |= FileAttributes.Hidden;
+                    rahs |= FileAttributes.Hidden;
                 }
                 if ((bool)checkBoxS.IsChecked)
                 {
-                    attributes |= FileAttributes.System;
+                    rahs |= FileAttributes.System;
                 }
                 if (isFile)
                 {
@@ -81,7 +69,7 @@ namespace lab2_WPF_app
                 {
                     Directory.CreateDirectory(path);
                 }
-                File.SetAttributes(path, attributes);
+                File.SetAttributes(path, rahs);
                 success = true;
                 Close();
             }
@@ -101,7 +89,5 @@ namespace lab2_WPF_app
         {
             return path;
         }
-
-
     }
 }
