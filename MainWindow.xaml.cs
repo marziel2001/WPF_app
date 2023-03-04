@@ -72,7 +72,7 @@ namespace lab2_WPF_app
                 Tag = file.FullName
             };
 
-            return item;
+            return item; 
         }
         private void Close(object sender, RoutedEventArgs e) 
         {
