@@ -40,13 +40,39 @@ namespace lab2_WPF_app
             treeView.Items.Clear();
             DirectoryInfo directory = new DirectoryInfo(dlg.SelectedPath);
             var root = CreateTreeDirectory(directory);
-            treeView.Items.Add(root);
-            
+            treeView.Items.Add(root);// add the created hierarchy to the tree element in GUI
+        
+        
         }
 
         private TreeViewItem CreateTreeDirectory(DirectoryInfo directory)
         {
-            
+            var root = new TreeViewItem
+            {
+                Header = directory.Name,
+                Tag = directory.FullName
+            };
+
+            foreach(DirectoryInfo subDirectory in directory.GetDirectories())
+            {
+                root.Items.Add(CreateTreeDirectory(subDirectory));
+            }
+            foreach(FileInfo file in directory.GetFiles())
+            {
+                root.Items.Add(CreateTreeFile(file));
+            }
+            return root;
+        }
+
+        private TreeViewItem CreateTreeFile(FileInfo file)
+        {
+            var item = new TreeViewItem
+            {
+                Header = file.Name,
+                Tag = file.FullName
+            };
+
+            return item;
         }
         private void Close(object sender, RoutedEventArgs e) 
         {
