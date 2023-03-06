@@ -5,25 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab2_WPF_app"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" SizeToContent="WidthAndHeight">
 
-    <Grid>
-        <ToolBar Margin="0,5,693,399" Grid.ColumnSpan="2">
-            <Menu Width="76">
-                <MenuItem Header="File" VerticalAlignment="Center" Height="30">
+    <Grid Margin="0,0,0,-6" MaxHeight="500" MaxWidth="800">
+        <ToolBar Margin="10,10,608,446">
+            <Menu Width="76" Height="32">
+                <MenuItem Header="File" VerticalAlignment="Center" Height="30" Width="74">
                     <MenuItem Header="Open" Click="Open"></MenuItem>
                     <MenuItem Header="Close" Click="Close"></MenuItem>
                 </MenuItem>
             </Menu>
         </ToolBar>
-        <TreeView x:Name="treeView" Margin="142,0,312,0" >
+        <TreeView x:Name="treeView" Margin="187,10,267,10" >
 
         </TreeView>
 
-        <StatusBar Margin="0,403,663,0" >
-            <TextBlock Name="status" Width="90"/>
+        <StatusBar Margin="10,452,612,10" >
+            <TextBlock Name="status" Width="171"/>
         </StatusBar>
 
-        <ScrollViewer x:Name="scrollViewer" Margin="523,0,10,0" />
+        <ScrollViewer x:Name="scrollViewer" Margin="533,10,10,10" />
     </Grid>
 </Window>

@@ -7,22 +7,26 @@
         mc:Ignorable="d"
         Title="CreateFileWindow" Height="300" Width="300">
 
-    <Grid RenderTransformOrigin="0.500,0.500">
+    <Grid RenderTransformOrigin="0.500,0.500" Height="300" Margin="0,0,0,-16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="139*"/>
+            <RowDefinition Height="161*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="156*"/>
             <ColumnDefinition Width="21*"/>
             <ColumnDefinition Width="14*"/>
             <ColumnDefinition Width="109*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Name:" Margin="91,29,20,231" Grid.ColumnSpan="2"/>
+        <Label Content="Name:" Margin="91,29,20,70" Grid.ColumnSpan="2"/>
         <TextBox x:Name="CreateFileWindowName" Margin="145,35,74,0" Text="Tekst" TextAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="4"/>
-        <RadioButton x:Name="radioFile" Margin="65,86,39,181" >File</RadioButton>
-        <RadioButton x:Name="radioDirectory" Margin="65,103,6,164">Directory</RadioButton>
-        <CheckBox x:Name="checkBoxR" Margin="150,86,74,181" Grid.ColumnSpan="4" >ReadOnly</CheckBox>
-        <CheckBox x:Name="checkBoxA" Margin="150,130,74,137" Grid.ColumnSpan="4">Archive</CheckBox>
-        <CheckBox x:Name="checkBoxH" Margin="150,108,74,159" Grid.ColumnSpan="4">Hidden</CheckBox>
-        <CheckBox x:Name="checkBoxS" Margin="150,152,74,115" Grid.ColumnSpan="4">System</CheckBox>
-        <Button x:Name="okButton" Click="OK_Button" Margin="91,193,24,64" >OK</Button>
-        <Button x:Name="cancelButton" Click="Cancel_Button" Margin="150,193,0,64" Grid.ColumnSpan="3">Cancel</Button>
+        <RadioButton x:Name="radioFile" Margin="65,86,39,20" >File</RadioButton>
+        <RadioButton x:Name="radioDirectory" Margin="65,103,6,3">Directory</RadioButton>
+        <CheckBox x:Name="checkBoxR" Margin="150,86,74,20" Grid.ColumnSpan="4" >ReadOnly</CheckBox>
+        <CheckBox x:Name="checkBoxA" Margin="150,130,74,137" Grid.ColumnSpan="4" Grid.RowSpan="2">Archive</CheckBox>
+        <CheckBox x:Name="checkBoxH" Margin="150,108,74,159" Grid.ColumnSpan="4" Grid.RowSpan="2">Hidden</CheckBox>
+        <CheckBox x:Name="checkBoxS" Margin="150,13,74,115" Grid.ColumnSpan="4" Grid.Row="1">System</CheckBox>
+        <Button x:Name="okButton" Click="OK_Button" Margin="91,54,24,64" Grid.Row="1" >OK</Button>
+        <Button x:Name="cancelButton" Click="Cancel_Button" Margin="150,54,239,64" Grid.ColumnSpan="4" Grid.Row="1">Cancel</Button>
     </Grid>
 </Window>
